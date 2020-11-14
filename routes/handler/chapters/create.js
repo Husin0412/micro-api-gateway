@@ -7,9 +7,8 @@ const api = apiAdatapter(URL_SERVICE_COURSE);
 
 module.exports = async (req, res) => {
     try {
-        const id = req.params.id;
-        const course = await api.get(`/api/courses/${id}`);
-        return res.json(course.data)
+        const chapter = await api.post('/api/chapters', req.body);
+        return res.json(chapter.data)
     } catch (error) {
 
         if (error.code === 'ECONNREFUSED') {

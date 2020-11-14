@@ -7,9 +7,14 @@ const api = apiAdatapter(URL_SERVICE_COURSE);
 
 module.exports = async (req, res) => {
     try {
-        const id = req.params.id;
-        const course = await api.get(`/api/courses/${id}`);
-        return res.json(course.data)
+        const userId = req.user.data.id;
+
+        const myCourses = await api.get('/api/my-courses', {
+            params: {
+                user_id: userId
+            }
+        });
+        return res.json(myCourses.data)
     } catch (error) {
 
         if (error.code === 'ECONNREFUSED') {

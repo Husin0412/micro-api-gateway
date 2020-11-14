@@ -8,8 +8,8 @@ const api = apiAdatapter(URL_SERVICE_COURSE);
 module.exports = async (req, res) => {
     try {
         const id = req.params.id;
-        const course = await api.get(`/api/courses/${id}`);
-        return res.json(course.data)
+        const lesson = await api.delete(`/api/lessons/${id}`);
+        return res.json(lesson.data)
     } catch (error) {
 
         if (error.code === 'ECONNREFUSED') {
