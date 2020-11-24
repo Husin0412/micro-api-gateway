@@ -42,10 +42,10 @@ app.use('/lessons', verifyToken, can('admin'), lessonsRouter);
 app.use('/media', verifyToken, can('admin', 'student'), mediaRoute);
 app.use('/orders', verifyToken, can('admin', 'student'), orderPaymentsRoute);
 app.use('/refresh-tokens', refreshTokensRouter);
-app.use('/mentors', verifyToken, mentorsRouter);
-app.use('/image-courses', verifyToken, imageCoursesRouter);
-app.use('/my-courses', verifyToken, myCoursesRouter);
-app.use('/reviews', verifyToken, reviewsRouter);
+app.use('/mentors', verifyToken, can('admin'), mentorsRouter);
+app.use('/image-courses', verifyToken, can('admin'), imageCoursesRouter);
+app.use('/my-courses', verifyToken, can('admin', 'student'), myCoursesRouter);
+app.use('/reviews', verifyToken, can('admin', 'student'), reviewsRouter);
 app.use('/webhook', webhookRouter);
 
 module.exports = app;
