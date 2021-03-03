@@ -9,5 +9,6 @@ const mediaHandler = require('./handler/media')
 router.post('/', mediaHandler.create)
 router.get('/', verifyToken, mediaHandler.getAll)
 router.delete('/:id', mediaHandler.destroy)
+router.post('/deleted', mediaHandler.deleted)
 
 module.exports = router;
