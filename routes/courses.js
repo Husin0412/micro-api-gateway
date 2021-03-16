@@ -7,9 +7,10 @@ const can = require('../middlewares/permission');
 // 
 router.get('/', coursesHandler.getAll);
 router.get('/:id', coursesHandler.get);
-
-router.post('/', verifyToken, can('admin'), coursesHandler.create);
-router.put('/:id', verifyToken, can('admin'), coursesHandler.update);
-router.delete('/:id', verifyToken, can('admin'), coursesHandler.destroy);
+router.get('/all', coursesHandler.getAlls);
+router.post('/', verifyToken, can('supersu', 'admin'), coursesHandler.create);
+router.put('/:id', verifyToken, can('supersu', 'admin'), coursesHandler.update);
+router.delete('/:id', verifyToken, can('supersu', 'admin'), coursesHandler.destroy);
+router.post('/search', verifyToken, can('supersu', 'admin'), coursesHandler.search);
 
 module.exports = router;

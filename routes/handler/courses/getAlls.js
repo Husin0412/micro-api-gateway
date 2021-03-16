@@ -1,15 +1,15 @@
 const apiAdatapter = require('../../apiAdapter');
 const {
-    URL_SERVICE_COURSE
+    URL_SERVICE_COURSE,
+    HOSTNAME
 } = process.env;
 
 const api = apiAdatapter(URL_SERVICE_COURSE);
 
 module.exports = async (req, res) => {
     try {
-        const id = req.params.id;
-        const course = await api.get(`/api/courses/${id}`);
-        return res.json(course.data)
+        const courses = await api.get('/api/courses/all');
+        return res.json(courses.data)
     } catch (error) {
 
         if (error.code === 'ECONNREFUSED') {

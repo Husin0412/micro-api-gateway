@@ -7,8 +7,7 @@ const api = apiAdatapter(URL_SERVICE_COURSE);
 
 module.exports = async (req, res) => {
     try {
-        const id = req.params.id;
-        const course = await api.get(`/api/courses/${id}`);
+        const course = await api.post('/api/courses/search', req.body);
         return res.json(course.data)
     } catch (error) {
 

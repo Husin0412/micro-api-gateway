@@ -7,15 +7,14 @@ const api = apiAdatapter(URL_SERVICE_COURSE);
 
 module.exports = async (req, res) => {
     try {
-        const id = req.params.id;
-        const course = await api.get(`/api/courses/${id}`);
-        return res.json(course.data)
+        const mentor = await api.post(`/api/mentors/search`, req.body);
+        return res.json(mentor.data)
     } catch (error) {
 
         if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({
                 status: 'error',
-                message: 'service course unavailable'
+                message: 'service unavailable'
             });
         }
 
