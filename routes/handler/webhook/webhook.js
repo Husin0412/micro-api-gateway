@@ -3,7 +3,7 @@ const {
     URL_SERVICE_ORDER_PAYMENT
 } = process.env;
 
-const api = apiAdatapter(URL_SERVICE_ORDER_PAYMENT);
+const api = apiAdatapter('http://localhost:8003');
 
 module.exports = async (req, res) => {
     try {
